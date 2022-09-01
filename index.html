@@ -64,17 +64,38 @@ plt.yticks([])
                     The matrix is permutated to be in order of increasing in-degree.
                     <br>
                     <br>
-    <pre class="bg-white"><code>resolution = 1000
-    x = np.linspace(-3,3,resolution)
-    y = np.linspace(-3,3,resolution)
-    xx,yy = np.meshgrid(x,y)
-    f = lambda x,y: 0 if (x**2+y**2)<0.1 else np.exp(-x**2- 0.2*y**2) 
-    z = np.array([f(i,j) for i in x for j in y]).reshape(resolution,resolution)
-    plt.figure(figsize=[6,6],dpi=150)
-    plt.pcolormesh(xx, yy, z, cmap='viridis', shading = 'auto')
-    plt.xticks([])
-    plt.yticks([])
-                        </code></pre>
+    <pre class="bg-white"><code>n = 12
+Adj =  np.random.randint(0,5,size=[n,n]) #adjancency matrix of your graph
+
+fig= plt.figure(figsize=[6,6],dpi=150)
+shp = (5, 5)
+ax0 = plt.subplot2grid(shape=shp, loc=(1, 0), colspan=4, rowspan=4)
+ax1 = plt.subplot2grid(shape=shp, loc=(0, 0), colspan=4,rowspan=1)
+ax2 = plt.subplot2grid(shape=shp, loc=(1, 4), colspan=1,rowspan=4)
+
+inds = np.argsort(Adj.sum(axis=0))
+Adj2=Adj[inds,:][:,inds] #sort by in-degree
+
+ax0.pcolormesh(Adj2, cmap='Blues')
+ax0.set_yticks(np.arange(0.5,n+0.5))
+ax0.set_yticklabels([i for i in range(0,n,stp)])
+
+stp = 1
+ax0.set_xticks(np.arange(0.5,n+0.5,stp))
+ax0.set_xticklabels([i for i in range(0,n,stp)])
+ax0.set_xlabel("In-degree")
+ax0.set_ylabel("Out-degree")
+
+ax1.set_title("In-degree")
+ax1.bar(np.arange(0.5,n+0.5),Adj2.sum(axis=0))
+ax1.set_xlim(0,n)
+ax1.set_xticks([])
+
+ax2.barh(np.arange(0.5,n+0.5),Adj2.sum(axis=1))
+ax2.set_ylim(0,n)
+ax2.set_yticks([])
+ax2.set_ylabel("Out-degree")
+ax2.yaxis.set_label_position("right")       </code></pre>
                         <br>
                         <img src="src/adjancencymatrix.png" class="img-fluid " alt="adjancency matrix plot">
                     </div>
