@@ -1,1 +1,85 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>recipe</title><script defer="defer" src="/js/chunk-vendors.e51876aa.js"></script><script defer="defer" src="/js/app.b65b9fcc.js"></script><link href="/css/app.4264bb81.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but recipe doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div></body></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Code Snippets</title>
+</head>
+<body class = "bg-light">
+    <div class="container my-5 mx-auto">
+        <h1 class="display-1 text-center my-4" >Overview</h1>
+        <div class="text-center lead">
+            Repository of useful code pieces
+        </div>
+    </div>
+    <div class="python container my-5 mx-auto">
+        <h2 class="display-3 text-center my-4" >Python</h1>
+            <div>
+            <h3 class="text-center my-4" >Basic Interactivity</h1>
+            Use ipywidgets to enable interactivity with functions in jupyter notebook. Very useful for rapid prototyping 
+            <br>
+            <br>
+            <pre class="bg-white"><code >import numpy as np
+import matplotlib.pyplot as plt
+from ipywidgets import interact, IntSlider, FloatSlider,FloatLogSlider, fixed
+def plotLine(m,c):
+    x = np.linspace(-10,10)
+    y = m*x+c
+    plt.plot(x,y)
+    plt.ylim(-20,20) 
+interact(plotLine,m=FloatSlider(min=-2,max=2,step=0.1,value=0),c=fixed(1))</code></pre>
+                (Just an image, not interactive here)
+                <br>
+                <img src="src/ipywidgets.PNG" class="img-fluid" alt="Example of ipywidgets slider">
+            </div>
+
+
+
+            <div>
+                <h3 class="text-center my-4" >Meshgrid, 2D functions, plotting</h1>
+                Plot a 2D function using meshgrid and pcolormesh() 
+                <br>
+                <br>
+<pre class="bg-white"><code>resolution = 1000
+x = np.linspace(-3,3,resolution)
+y = np.linspace(-3,3,resolution)
+xx,yy = np.meshgrid(x,y)
+f = lambda x,y: 0 if (x**2+y**2)<0.1 else np.exp(-x**2- 0.2*y**2) 
+z = np.array([f(i,j) for i in x for j in y]).reshape(resolution,resolution)
+plt.figure(figsize=[6,6],dpi=150)
+plt.pcolormesh(xx, yy, z, cmap='viridis', shading = 'auto')
+plt.xticks([])
+plt.yticks([])
+                    </code></pre>
+                    <br>
+                    <img src="src/imgplot.png" class="img-fluid " alt="Image result">
+                </div>
+
+
+                <div>
+                    <h3 class="text-center my-4" >Adjacency matrix with distributions</h1>
+                    Plot a graph adjancency matrix with in and out degree distributions. 
+                    The matrix is permutated to be in order of increasing in-degree.
+                    <br>
+                    <br>
+    <pre class="bg-white"><code>resolution = 1000
+    x = np.linspace(-3,3,resolution)
+    y = np.linspace(-3,3,resolution)
+    xx,yy = np.meshgrid(x,y)
+    f = lambda x,y: 0 if (x**2+y**2)<0.1 else np.exp(-x**2- 0.2*y**2) 
+    z = np.array([f(i,j) for i in x for j in y]).reshape(resolution,resolution)
+    plt.figure(figsize=[6,6],dpi=150)
+    plt.pcolormesh(xx, yy, z, cmap='viridis', shading = 'auto')
+    plt.xticks([])
+    plt.yticks([])
+                        </code></pre>
+                        <br>
+                        <img src="src/adjancencymatrix.png" class="img-fluid " alt="adjancency matrix plot">
+                    </div>
+
+    </div>
+    
+</body>
+</html>
