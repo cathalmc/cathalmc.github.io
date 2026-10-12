@@ -250,3 +250,8 @@ footer {
         scroll-behavior: auto !important;
     }
 }
+
+#about .body a {
+    text-decoration-color: var(--accent);
+    text-underline-offset: 4px;
+}
