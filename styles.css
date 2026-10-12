@@ -1,113 +1,252 @@
 /* CREATED BY CLAUDE opus5.5 */
-/* Home page styles. Colours are variables so light and dark mode share every rule. */
+/* Home page theme: muted stone and sage. Every colour is a variable, so light and dark mode
+   share all the rules below and only the palette changes. */
 :root {
-    --bg: #f7f7f5;
-    --text: #1d2126;
-    --muted: #5c6670;
-    --card: #ffffff;
-    --border: #dcdfe3;
-    --accent: #1f5fbf;
+    --bg: #ecebe4;
+    --surface: #f4f3ee;
+    --text: #2b2f2c;
+    --muted: #747a72;
+    --line: #d3d2c8;
+    --accent: #5e7565;
+    --accentSoft: #dfe4da;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Manrope", "Segoe UI", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: #15181c;
-        --text: #e6e8eb;
-        --muted: #9aa4ae;
-        --card: #1d2127;
-        --border: #30363d;
-        --accent: #7fb0ff;
+        --bg: #1b1d1b;
+        --surface: #232623;
+        --text: #dcddd5;
+        --muted: #8d938a;
+        --line: #343833;
+        --accent: #9fb5a4;
+        --accentSoft: #2c322d;
     }
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
+    font-family: var(--sans);
+    font-size: 1.02rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-main,
-footer {
-    max-width: 680px;
+::selection {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+a {
+    color: inherit;
+}
+
+.page {
+    max-width: 880px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 28px;
 }
 
-main {
-    padding-top: 72px;
+/* ---------- header ---------- */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
 }
+
+.mark {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a,
+footer a {
+    font-size: 0.86rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+nav a:hover,
+footer a:hover {
+    color: var(--text);
+}
+
+/* ---------- hero ---------- */
 
 h1 {
-    margin: 0 0 40px;
-    font-size: 2.4rem;
-    font-weight: 650;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    margin: 12vh 0 14vh;
+    font-family: var(--serif);
+    font-size: clamp(3rem, 10vw, 6.2rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+}
+
+/* ---------- sections: label on the left, content on the right ---------- */
+
+section {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 24px;
+    padding: 44px 0;
+    border-top: 1px solid var(--line);
+    scroll-margin-top: 20px;
 }
 
 h2 {
-    margin: 0 0 12px;
-    font-size: 0.8rem;
+    margin: 5px 0 0;
+    font-size: 0.74rem;
     font-weight: 600;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--muted);
 }
 
-section {
-    margin-bottom: 48px;
+.body p {
+    margin: 0 0 14px;
+    max-width: 58ch;
 }
 
-section p {
-    margin: 0 0 12px;
+#about .body p {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    line-height: 1.5;
 }
+
+/* ---------- project card ---------- */
 
 .project {
-    display: block;
-    padding: 20px 22px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    color: inherit;
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 26px;
+    align-items: center;
+    padding: 26px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
     text-decoration: none;
-    transition: border-color 0.15s;
+    transition: border-color 0.25s, transform 0.25s;
 }
 
 .project:hover,
 .project:focus-visible {
     border-color: var(--accent);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.motif {
+    width: 100%;
+    padding: 14px;
+    background: var(--accentSoft);
+    border-radius: 12px;
+}
+
+.motif path {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 1.6;
+    opacity: 0.6;
+}
+
+.motif circle {
+    fill: var(--surface);
+    stroke: var(--accent);
+    stroke-width: 1.8;
 }
 
 .project h3 {
     margin: 0 0 6px;
-    font-size: 1.15rem;
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
 }
 
 .project p {
     color: var(--muted);
+    font-size: 0.96rem;
 }
 
-.project .open {
-    color: var(--accent);
+.open {
+    font-size: 0.86rem;
     font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
 }
 
-.project .open::after {
-    content: " \2192";
+.open::after {
+    content: "\2192";
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.25s;
 }
+
+.project:hover .open::after {
+    transform: translateX(5px);
+}
+
+/* ---------- footer ---------- */
 
 footer {
-    padding-top: 8px;
-    padding-bottom: 48px;
-    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 0 44px;
+    border-top: 1px solid var(--line);
+    font-size: 0.86rem;
+    color: var(--muted);
 }
 
-footer a {
-    color: var(--muted);
+/* ---------- small screens ---------- */
+
+@media (max-width: 640px) {
+    h1 {
+        margin: 8vh 0 9vh;
+    }
+
+    section {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 34px 0;
+    }
+
+    .project {
+        grid-template-columns: 1fr;
+    }
+
+    .motif {
+        max-width: 150px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }

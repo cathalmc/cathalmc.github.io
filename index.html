@@ -5,33 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cathal McLoughlin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Manrope:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <main>
-        <h1>Cathal McLoughlin</h1>
+    <div class="page">
+        <header>
+            <span class="mark" aria-hidden="true"></span>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="https://github.com/cathalmc">GitHub</a>
+            </nav>
+        </header>
 
-        <!-- ABOUT ME: edit the text between the two markers below. -->
-        <!-- ABOUT START -->
-        <section id="about">
-            <h2>About me</h2>
-            <p>Coming soon.</p>
-        </section>
-        <!-- ABOUT END -->
+        <main>
+            <h1>Cathal<br>McLoughlin</h1>
 
-        <section id="projects">
-            <h2>Projects</h2>
-            <a class="project" href="CGraphApp/">
-                <h3>CGraphApp</h3>
-                <p>An interactive graph editor for system diagrams, kinetic mechanisms and
-                    neural networks. Runs in your browser; graphs are plain JSON files.</p>
-                <span class="open">Open the app</span>
-            </a>
-        </section>
-    </main>
+            <!-- ABOUT ME: edit the text between the two markers below. -->
+            <!-- ABOUT START -->
+            <section id="about">
+                <h2>About</h2>
+                <div class="body">
+                    <p>Coming soon.</p>
+                </div>
+            </section>
+            <!-- ABOUT END -->
 
-    <footer>
-        <a href="https://github.com/cathalmc">GitHub</a>
-    </footer>
+            <section id="projects">
+                <h2>Projects</h2>
+                <div class="body">
+                    <a class="project" href="CGraphApp/">
+                        <svg class="motif" viewBox="0 0 120 80" aria-hidden="true">
+                            <path d="M22 22 L60 40 L98 20 M60 40 L44 64 M60 40 L92 60" />
+                            <circle cx="22" cy="22" r="7" />
+                            <circle cx="60" cy="40" r="9" />
+                            <circle cx="98" cy="20" r="6" />
+                            <circle cx="44" cy="64" r="6" />
+                            <circle cx="92" cy="60" r="7" />
+                        </svg>
+                        <div>
+                            <h3>CGraphApp</h3>
+                            <p>An interactive graph editor for system diagrams, kinetic mechanisms
+                                and neural networks. Runs in your browser; graphs are plain JSON
+                                files.</p>
+                            <span class="open">Open the app</span>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <span>Cathal McLoughlin</span>
+            <a href="https://github.com/cathalmc">github.com/cathalmc</a>
+        </footer>
+    </div>
 </body>
 </html>
