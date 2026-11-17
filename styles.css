@@ -255,3 +255,7 @@ footer {
     text-decoration-color: var(--accent);
     text-underline-offset: 4px;
 }
+
+.project + .project {
+    margin-top: 18px;
+}
